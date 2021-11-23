@@ -34,8 +34,11 @@ function setup(){
 }
 
 function getposes(result_array) {
-	if (result_array > 0) {
+	if (result_array.length>0) {
 		console.log(result_array)
+    rightX=result_array[0].pose.rightWrist.x;
+    rightY=result_array[0].pose.rightWrist.y;
+    rightwrist_score=result_array[0].pose.keypoints[10].score;
 	}
 }
 function modelloaded(){
@@ -49,6 +52,12 @@ function draw(){
  fill("black");
  stroke("black");
  rect(680,0,20,700);
+
+ if(rightwrist_score>0.2){
+fill("#03fc56")
+stroke("#005232")
+circle(rightX,rightY,100);
+ }
 
  fill("black");
  stroke("black");
